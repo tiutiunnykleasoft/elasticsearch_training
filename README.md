@@ -1,6 +1,6 @@
 # elasticsearch_training
-Just a repository to training with ElasticSearch library for PHP
-Installing (MacOs) : 
+Just a repository to training with ElasticSearch library for PHP <br>
+* Installing (MacOs) : <br>
 	- Core:
 		1. `brew tap elastic/tap` -> download latest ElasticSeach using HomeBrew.
 		2. `brew install elastic/tap/elasticsearch-full` -> Installing ElasticSearch.
