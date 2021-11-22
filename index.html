@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title>Car Repair Service</title>
+    <link href="style.css" rel="stylesheet">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('key_form').addEventListener('submit', function () {
+                event.preventDefault();
+                let data = '';
+                data += '?name=' + document.getElementById('key_name') + '&'
+                data += 'size=' + document.getElementById('key_size')
+                const XHR = new XMLHttpRequest();
+                XHR.open('POST', 'https://localhost/index.php');
+                XHR.send(data);
+                updateTable();
+            });
+
+            function updateTable() {
+                let XHR = new XMLHttpRequest();
+                XHR.open('GET', 'https://localhost/index.php?get=all')
+                XHR.addEventListener("readystatechange", () => {
+                    if (XHR.readyState === 4 && XHR.status === 200) {
+
+                        // выводим в консоль то что ответил сервер
+                        console.log( XHR.responseText );
+                    }
+                });
+                XHR.send();
+            }
+        });
+    </script>
+</head>
+<body>
+<label for="key_form">Add new key : </label>
+<form action="index.php" id="key_form">
+    <label for="key_name">Name :</label><input type="text" id="key_name"><br>
+    <label for="key_size">Size :</label><input type="text" id="key_size"><br>
+    <input type="submit" value="Add" id="saveKey">
+</form>
+</body>
+</html>
